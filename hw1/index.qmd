@@ -1,0 +1,33 @@
+---
+title: "Assignment 1"
+author: "Sarah Muhlert"
+format: html
+editor: visual
+---
+
+
+
+Here is a simple plot I created
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+x <- rnorm(500, mean = 10, sd = 2)
+hist(x)
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).

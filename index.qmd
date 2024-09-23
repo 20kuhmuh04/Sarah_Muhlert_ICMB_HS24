@@ -1,0 +1,26 @@
+---
+title: "Sarah_Muhlert_ICMB_HS24.git"
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+```{r}
+# install.packages("ggplot2")
+library(ggplot2)
+
+# Parametric equation for the heart shape
+t <- seq(0, 2 * pi, length.out = 1000)
+x <- 16 * sin(t)^3
+y <- 13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t)
+
+heart_data <- data.frame(x, y)
+
+# Plotting the heart
+ggplot(heart_data, aes(x = x, y = y)) +
+  geom_path(color = "red") +
+  coord_equal() +
+  theme_void()
+
+```

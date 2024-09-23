@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sarah_Muhlert_ICMB_HS24.git",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n# install.packages(\"ggplot2\")\nlibrary(ggplot2)\n\n# Parametric equation for the heart shape\nt &lt;- seq(0, 2 * pi, length.out = 1000)\nx &lt;- 16 * sin(t)^3\ny &lt;- 13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t)\n\nheart_data &lt;- data.frame(x, y)\n\n# Plotting the heart\nggplot(heart_data, aes(x = x, y = y)) +\n  geom_path(color = \"red\") +\n  coord_equal() +\n  theme_void()"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]
