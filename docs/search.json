@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sarah_Muhlert_ICMB_HS24.git",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n\nCode\n# install.packages(\"ggplot2\")\nlibrary(ggplot2)\n\n# Parametric equation for the heart shape\nt &lt;- seq(0, 2 * pi, length.out = 1000)\nx &lt;- 16 * sin(t)^3\ny &lt;- 13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t)\n\nheart_data &lt;- data.frame(x, y)\n\n# Plotting the heart\nggplot(heart_data, aes(x = x, y = y)) +\n  geom_path(color = \"red\") +\n  coord_equal() +\n  theme_void()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nCode# install.packages(\"ggplot2\")\nlibrary(ggplot2)\n\n# Parametric equation for the heart shape\nt &lt;- seq(0, 2 * pi, length.out = 1000)\nx &lt;- 16 * sin(t)^3\ny &lt;- 13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t)\n\nheart_data &lt;- data.frame(x, y)\n\n# Plotting the heart\nggplot(heart_data, aes(x = x, y = y)) +\n  geom_path(color = \"red\") +\n  coord_equal() +\n  theme_void()\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "About",
       "Sarah_Muhlert_ICMB_HS24.git"
@@ -15,7 +15,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\n\n\n\n\n\n Back to top"
+    "text": "About this site\n\nCode1 + 1\n\n[1] 2\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "hw1/index.html",
@@ -44,7 +44,7 @@
     "href": "hw1/index.html#running-code",
     "title": "Assignment 1",
     "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\nx &lt;- rnorm(500, mean = 10, sd = 2)\nhist(x)\n\n\n\n\n\n\n\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\nCodex &lt;- rnorm(500, mean = 10, sd = 2)\nhist(x)\n\n\n\n\n\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
     "crumbs": [
       "About",
       "Assignment 1"
