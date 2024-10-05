@@ -49,5 +49,16 @@
       "About",
       "Assignment 1"
     ]
+  },
+  {
+    "objectID": "hw2/index.html",
+    "href": "hw2/index.html",
+    "title": "Assignment 2",
+    "section": "",
+    "text": "Codeset.seed(123)\n#Parameters\n\nN &lt;- 5000        #Default size of the population\n\nMU &lt;- 100        #Default mean of the population\n\nsigma &lt;- MU / 5  #Standard deviation is 1/5 of the mean\n\n#Generate the population\n\npopulation &lt;- rnorm(N, mean = MU, sd = sigma)\npopulation[population &lt;= 0] &lt;- 1\n\n#Create gini function\n\ngini &lt;- function(y) {\n  y &lt;- sort(y)     #Sort pop by wealth in asending order \n  n &lt;- length(y)   #Number of people\n  numer &lt;- 2 * sum((1:n) * y)  #Numerator sum of sorted values weighted by list pos\n  denom &lt;- n * sum(y)  #Denominator total wealth of pop\n    return((numer / denom) - (n + 1) / n) #Compute gini coeffi\n}\n\n# Print initial Gini coefficient\ncat(\"Initial Gini coefficient:\", gini(population), \"\\n\")\n\nInitial Gini coefficient: 0.1121553 \n\nCode#Create hist of pop\n\nlibrary(ggplot2)\nlibrary(ggplot2)\nhist_pop &lt;- function(population, label='Population') {\n  gini_value &lt;- round(gini(population), 2)\n  label &lt;- paste(label, \"- Gini =\", gini_value)\n  \n  p &lt;- ggplot(data.frame(population), aes(x = population)) +\n    geom_histogram(bins = 30, fill = \"blue\", color = \"black\", alpha = 0.5) +\n    labs(title = label, x = \"Wealth\", y = \"Count\") +\n    theme_minimal() +\n    theme(panel.grid.major = element_line(colour = \"grey\"))\n  \n  print(p)  \n}\n\nhist_pop(population)\n\n\n\n\n\n\nCode# Transaction: Randomly split the pot between two actors\nrandom_split &lt;- function(A, B) {\n  pot &lt;- A + B\n  if (A &lt;= 0 && B &lt;= 0) return(c(0, 0))\n  share &lt;- runif(1, 0, pot)\n  return(c(share, pot - share))\n}\n\n# Randomly select two actors\nanyone &lt;- function(N) sample(1:N, 2)\n\n# Simulation step: Perform one transaction between two random actors\nstep_function &lt;- function(population) {\n  indices &lt;- anyone(length(population))\n  population[indices] &lt;- random_split(population[indices[1]], population[indices[2]])\n  return(population)\n}\n\n# Simulate over T steps\nsimulate &lt;- function(population, T) {\n  for (t in 1:T) {\n    population &lt;- step_function(population)\n  }\n  return(population)\n}\n\n# Run the simulation and visualize the results\nT &lt;- 1000  # Number of steps\nfinal_population &lt;- simulate(population, T)\n\n# Plot final population distribution\nhist_pop(final_population, \"Final Population\")\n\n\n\n\n\n\nCode# Display final Gini coefficient\ncat(\"Final Gini coefficient:\", gini(final_population), \"\\n\")\n\nFinal Gini coefficient: 0.2120456 \n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "About",
+      "Assignment 2"
+    ]
   }
 ]

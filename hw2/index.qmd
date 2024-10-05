@@ -1,0 +1,93 @@
+---
+title: "Assignment 2"
+---
+
+```{r}
+set.seed(123)
+#Parameters
+
+N <- 5000        #Default size of the population
+
+MU <- 100        #Default mean of the population
+
+sigma <- MU / 5  #Standard deviation is 1/5 of the mean
+
+#Generate the population
+
+population <- rnorm(N, mean = MU, sd = sigma)
+population[population <= 0] <- 1
+
+#Create gini function
+
+gini <- function(y) {
+  y <- sort(y)     #Sort pop by wealth in asending order 
+  n <- length(y)   #Number of people
+  numer <- 2 * sum((1:n) * y)  #Numerator sum of sorted values weighted by list pos
+  denom <- n * sum(y)  #Denominator total wealth of pop
+    return((numer / denom) - (n + 1) / n) #Compute gini coeffi
+}
+
+# Print initial Gini coefficient
+cat("Initial Gini coefficient:", gini(population), "\n")
+
+#Create hist of pop
+
+library(ggplot2)
+library(ggplot2)
+hist_pop <- function(population, label='Population') {
+  gini_value <- round(gini(population), 2)
+  label <- paste(label, "- Gini =", gini_value)
+  
+  p <- ggplot(data.frame(population), aes(x = population)) +
+    geom_histogram(bins = 30, fill = "blue", color = "black", alpha = 0.5) +
+    labs(title = label, x = "Wealth", y = "Count") +
+    theme_minimal() +
+    theme(panel.grid.major = element_line(colour = "grey"))
+  
+  print(p)  
+}
+
+hist_pop(population)
+
+# Transaction: Randomly split the pot between two actors
+random_split <- function(A, B) {
+  pot <- A + B
+  if (A <= 0 && B <= 0) return(c(0, 0))
+  share <- runif(1, 0, pot)
+  return(c(share, pot - share))
+}
+
+# Randomly select two actors
+anyone <- function(N) sample(1:N, 2)
+
+# Simulation step: Perform one transaction between two random actors
+step_function <- function(population) {
+  indices <- anyone(length(population))
+  population[indices] <- random_split(population[indices[1]], population[indices[2]])
+  return(population)
+}
+
+# Simulate over T steps
+simulate <- function(population, T) {
+  for (t in 1:T) {
+    population <- step_function(population)
+  }
+  return(population)
+}
+
+# Run the simulation and visualize the results
+T <- 1000  # Number of steps
+final_population <- simulate(population, T)
+
+# Plot final population distribution
+hist_pop(final_population, "Final Population")
+
+# Display final Gini coefficient
+cat("Final Gini coefficient:", gini(final_population), "\n")
+
+```
+
+------------------------------------------------------------------------
+
+``` R
+```
